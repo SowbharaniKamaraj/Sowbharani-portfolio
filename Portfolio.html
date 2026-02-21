@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sowbharani K - Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #b8b8b8 0%, #d0d0d0 100%);
+            position: relative;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 50%, #001a4d 50%);
+            z-index: 1;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(90deg, #a8d8ff 0%, #001a4d 100%);
+            z-index: 0;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            z-index: 2;
+            position: relative;
+        }
+
+        .header-content {
+            flex: 1;
+            z-index: 2;
+            position: relative;
+        }
+
+        .header-content h1 {
+            font-size: 32px;
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .header-content p {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 20px;
+            padding: 30px;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .section {
+            border-bottom: 3px solid #000;
+            padding-bottom: 15px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-icon {
+            font-size: 20px;
+        }
+
+        .about-text {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* Contact Section */
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .contact-item strong {
+            color: #000;
+        }
+
+        /* Skills Section */
+        .skill-item {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 8px;
+            list-style: none;
+            margin-left: 15px;
+        }
+
+        .skill-item::before {
+            content: '•';
+            margin-left: -10px;
+            margin-right: 8px;
+        }
+
+        /* Right Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .main-section {
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .main-section h2 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .education-item {
+            margin-bottom: 15px;
+        }
+
+        .education-year {
+            font-size: 14px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .education-school {
+            font-size: 13px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .education-detail {
+            font-size: 13px;
+            color: #333;
+            margin-left: 15px;
+            list-style: none;
+        }
+
+        .education-detail::before {
+            content: '•';
+            margin-right: 8px;
+        }
+
+        /* Projects Section */
+        .project-item {
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 3px;
+        }
+
+        .project-desc {
+            font-size: 13px;
+            color: #333;
+            margin-left: 15px;
+        }
+
+        /* Reference Section */
+        .reference-item {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 8px;
+            margin-left: 15px;
+            list-style: none;
+        }
+
+        .reference-item::before {
+            content: '•';
+            margin-right: 8px;
+        }
+
+        /* Footer Diagonal */
+        .footer {
+            height: 60px;
+            background: linear-gradient(135deg, #001a4d 0%, #001a4d 50%, transparent 50%);
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-content h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="profile.jpg" alt="Sowbharani K" class="profile-pic">
+            <div class="header-content">
+                <h1>SOWBHARANI K</h1>
+                <p>FULL STACK DEVELOPER</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Left Sidebar -->
+            <div class="sidebar">
+                <!-- About Me -->
+                <div class="section">
+                    <h2><span class="section-icon">👤</span> About Me</h2>
+                    <p class="about-text">An aspiring Full Stack Developer. I have a strong interest in web development and enjoy building responsive and user-friendly web applications. I am a quick learner, self-motivated and eager to enhance my technical skills.</p>
+                </div>
+
+                <!-- Contact -->
+                <div class="section">
+                    <h2><span class="section-icon">📞</span> Contact</h2>
+                    <div class="contact-item">
+                        <span>📱 9842516465</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Git-hub</strong> <span>SowbharaniKamaraj</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📧</strong> <span>sowbharaniperundurai123@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📍</strong> <span>Ashok nagar.perundurai.Erode.</span>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="section">
+                    <h2><span class="section-icon">💼</span> Skills</h2>
+                    <ul>
+                        <li class="skill-item">Java script</li>
+                        <li class="skill-item">C programming</li>
+                        <li class="skill-item">C++</li>
+                        <li class="skill-item">Python</li>
+                        <li class="skill-item">HTML & CSS</li>
+                        <li class="skill-item">Front-end Developer</li>
+                    </ul>
+                </div>
+
+                <!-- Language -->
+                <div class="section" style="border-bottom: none;">
+                    <h2><span class="section-icon">🌐</span> Language</h2>
+                    <ul>
+                        <li class="skill-item">English</li>
+                        <li class="skill-item">Tamil</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div class="main-content">
+                <!-- Education -->
+                <div class="main-section">
+                    <h2><span class="section-icon">🎓</span> Education</h2>
+                    
+                    <div class="education-item">
+                        <div class="education-year">(2022-2024)</div>
+                        <div class="education-school">KONGU VELLALAR MATRIC HR SEC SCHOOL</div>
+                        <div class="education-detail">SSLC - 91%</div>
+                        <div class="education-detail">HIGHER SECONDARY - 86%</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="education-year">(2025-2028)</div>
+                        <div class="education-school">KONGU ENGINEERING COLLEGE</div>
+                        <div class="education-detail">BSC-SOFTWARE SYSTEM</div>
+                    </div>
+                </div>
+
+                <!-- Projects & Activities -->
+                <div class="main-section">
+                    <h2><span class="section-icon">⭐</span> PROJECTS & ACTIVITIES</h2>
+                    
+                    <div class="project-item">
+                        <div class="project-title">● paper presentation</div>
+                        <div class="project-desc">Responsive Web Design and its Importance</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-title">● Non formal course</div>
+                        <div class="project-desc">Fullstack developer</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-title">● Area of Interest</div>
+                        <div class="project-desc">
+                            <div style="margin-left: 15px;">
+                                • Web development<br>
+                                • Programming & Coding<br>
+                                • problem solving
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference -->
+                <div class="main-section" style="border-bottom: none;">
+                    <h2><span class="section-icon">⭐</span> Reference</h2>
+                    <div class="reference-item">Sindhuja-Assistant Professor CT-UG Kongu Engineering college, perundurai.</div>
+                    <div class="reference-item">sindhujactug@gmail.com</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer"></div>
+    </div>
+</body>
+</html>
